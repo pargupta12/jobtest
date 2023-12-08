@@ -8,7 +8,10 @@ spec:
       containers:
       - name: my-container
         image: busybox:latest
-        command: ["/bin/sh", "-c", "echo Key1: $(cat /config/config.yaml | grep 'key1' | cut -d' ' -f2) && echo Key2: $(cat /config/config.yaml | grep 'key2' | cut -d' ' -f2)"]
+        command:
+          - "/bin/sh"
+          - "-c"
+          - "echo Key1: $(cat /config/config.yaml | grep 'key1:' | awk '{print $2}') && echo Key2: $(cat /config/config.yaml | grep 'key2:' | awk '{print $2}')"
         volumeMounts:
         - name: config-volume
           mountPath: /config
