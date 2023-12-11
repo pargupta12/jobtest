@@ -1,33 +1,16 @@
+# job.yaml
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: hello1-world2
+  name: my3-job
 spec:
   template:
     spec:
-      restartPolicy: Never  # Move restartPolicy here
       containers:
-      - name: busybox
+      - name: my-container
         image: busybox
-        command:
-          - "/bin/sh"
-          - "-c"
-          - |
-            # Read configuration from file
-            CONFIG_FILE=/config/config.yaml
-            if [ -f "$CONFIG_FILE" ]; then
-              . "$CONFIG_FILE"
-              echo "Key1: $key1"
-              echo "Key2: $key2"
-            else
-              echo "Config file not found!"
-              exit 1
-            fi
-        volumeMounts:
-        - name: config-volume
-          mountPath: /config
-      volumes:
-      - name: config-volume
-        configMap:
-          name: my-config1
-  backoffLimit: 3
+        command: ["/bin/sh", "-c", "echo Variable1: $variable1 && echo Variable2: $variable2"]
+        envFrom:
+        - configMapRef:
+            name: my-config1
+      restartPolicy: Never
