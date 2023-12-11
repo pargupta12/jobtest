@@ -1,8 +1,8 @@
+# configmap.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: my-config1
 data:
-  config.yaml: |
-    key1: value1
-    key2: value2
+  variable1: value1
+  variable2: value2
