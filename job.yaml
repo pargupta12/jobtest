@@ -1,21 +1,31 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: my-job
+  name: hello1-world
 spec:
   template:
     spec:
       containers:
-      - name: my-container
-        image: busybox:latest
+      - name: busybox
+        image: busybox
         command:
           - "/bin/sh"
           - "-c"
-          - "echo Key1: $(cat /config/config.yaml | grep 'key1:' | awk '{print $2}') && echo Key2: $(cat /config/config.yaml | grep 'key2:' | awk '{print $2}')"
+          - |
+            # Read configuration from file
+            CONFIG_FILE=/config/config.yaml
+            if [ -f "$CONFIG_FILE" ]; then
+              . "$CONFIG_FILE"
+              echo "Key1: $key1"
+              echo "Key2: $key2"
+            else
+              echo "Config file not found!"
+              exit 1
+            fi
+        restartPolicy: Never
         volumeMounts:
         - name: config-volume
           mountPath: /config
-      restartPolicy: OnFailure
       volumes:
       - name: config-volume
         configMap:
