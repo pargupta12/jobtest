@@ -5,6 +5,7 @@ metadata:
 spec:
   template:
     spec:
+      restartPolicy: Never  # Move restartPolicy here
       containers:
       - name: busybox
         image: busybox
@@ -22,7 +23,6 @@ spec:
               echo "Config file not found!"
               exit 1
             fi
-        restartPolicy: Never
         volumeMounts:
         - name: config-volume
           mountPath: /config
