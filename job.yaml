@@ -29,5 +29,5 @@ spec:
       volumes:
       - name: config-volume
         configMap:
-          name: my-config
+          name: my-config1
   backoffLimit: 3
