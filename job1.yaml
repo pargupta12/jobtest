@@ -1,0 +1,18 @@
+# jobs/my-job.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: my-job-
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+spec:
+  template:
+    spec:
+      containers:
+      - name: my-container
+        image: busybox
+        command: ["/bin/sh", "-c", "echo Variable1: $variable1 && echo Variable2: $variable2"]
+        envFrom:
+        - configMapRef:
+            name: my-config1
+      restartPolicy: Never
