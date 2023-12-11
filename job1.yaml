@@ -11,7 +11,7 @@ spec:
       containers:
       - name: my-container
         image: busybox
-        command: ["/bin/sh", "-c", "echo Variable1: $variable1 && echo Variable2: $variable2"]
+        command: ["/bin/sh", "-c", "echo Variable111: $variable1 && echo Variable2222: $variable2"]
         envFrom:
         - configMapRef:
             name: my-config1
