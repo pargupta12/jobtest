@@ -11,8 +11,12 @@ spec:
       containers:
       - name: my-container
         image: busybox
-        command: ["/bin/sh", "-c", "echo Variable111: $variable1 && echo Variable2222: $variable2"]
+        command: ["/bin/sh", "-c", "echo Variable111: $variable1 && echo Variable2222: $variable2 && echo Systems: $SYSTEMS"]
         envFrom:
         - configMapRef:
             name: my-config1
+            # Define the environment variable name to reference the 'systems' data in the ConfigMap
+            items:
+            - key: systems
+              path: SYSTEMS
       restartPolicy: Never
