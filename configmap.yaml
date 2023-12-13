@@ -1,8 +1,26 @@
-# configmap.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: my-config1
 data:
-  variable1: value4
-  variable2: value2
+  systems:
+    # Define permissions for the vault system
+    - vault:
+        resources:
+          # Define permissions for the specified path
+          - resource: Path
+            basepath: cloudtech/klam
+            value:
+               - app/klam_azure/sp_secrets
+            # Admin user permissions configuration
+            admin:
+              okta:
+                - name: grp-cloudtech-klam-admin
+            # Poweruser permissions configuration
+            power:
+              okta:
+                - name: grp-cloudtech-klam-power
+            # ReadOnly permissions configuration
+            readonly:
+              okta:
+                - name: grp-cloudtech-klam-power
