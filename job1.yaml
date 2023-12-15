@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
       - name: my-container
-        image: vaultapp2
+        image: ac-app
         env:
         - name: YAML_STRING
           valueFrom:
