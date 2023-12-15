@@ -17,4 +17,6 @@ spec:
             configMapKeyRef:
               name: my-config1
               key: myConfigYAML
+      imagePullSecrets:
+      - name: my-secret2
       restartPolicy: Never
