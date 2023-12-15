@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
       - name: my-container
-        image: ac-app
+        image: docker-docker-parag-repo-test-snapshot.dr-uw2.adobeitc.com/docker-docker-parag-repo-test-snapshot/ac-app
         env:
         - name: YAML_STRING
           valueFrom:
