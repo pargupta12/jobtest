@@ -15,7 +15,7 @@ data:
             - base_path: cloudtech/lkam
               custom_paths:
                 - app/lkam_azure/sp_secrets
-              policy_base_name: cloudtech_lkam_prod
+              policy_base_name: cloudtech_lkam_pro
               roles:
                 admin:
                   okta:
