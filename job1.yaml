@@ -11,11 +11,10 @@ spec:
       containers:
       - name: my-container
         image: vaultapp2
-        command: ["/bin/sh", "-c", "echo Variable111: $variable1 && echo Variable2222: $variable2 && echo Systems: $SYSTEMS"]
         env:
-          - name: YAML_STRING
-            valueFrom:
-              configMapKeyRef:
-                name: my-config1
-                key: myConfigYAML
+        - name: YAML_STRING
+          valueFrom:
+            configMapKeyRef:
+              name: my-config1
+              key: myConfigYAML
       restartPolicy: Never
