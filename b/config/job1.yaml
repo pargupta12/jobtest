@@ -1,0 +1,22 @@
+# jobs/my-job.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: my-job-
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+spec:
+  template:
+    spec:
+      containers:
+      - name: my-container
+        image: docker-docker-parag-repo-test-snapshot.dr-uw2.adobeitc.com/docker-docker-parag-repo-test-snapshot/acc-app
+        env:
+        - name: YAML_STRING
+          valueFrom:
+            configMapKeyRef:
+              name: my-config1
+              key: myConfigYAML
+      imagePullSecrets:
+      - name: my-secret2
+      restartPolicy: Never
