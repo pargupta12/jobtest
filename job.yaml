@@ -2,7 +2,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: my3-job
+  name: my3-jo
 spec:
   template:
     spec:
